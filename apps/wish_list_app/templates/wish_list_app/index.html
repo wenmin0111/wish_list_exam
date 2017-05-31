@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login/Registration</title>
+  </head>
+  <body>
+    {{users}}<br>
+    {% for user in users %}
+      <p>{{user.first_name}} {{user.last_name}} {{user.email}} {{user.password}}</p><br>
+    {% endfor %}
+    <h1>Registration</h1>
+    <form class="" action="/regist" method="post">
+      {% csrf_token %}
+      First Name: <input type="text" name="firstName" value=""><p name="fn">{{fn}}</p><br>
+      Last Name: <input type="text" name="lastName" value=""><br>
+      Email: <input type="text" name="email" value=""><br>
+      Password: <input type="password" name="password" value=""><br>
+      Confirm pw: <input type="password" name="confirm" value=""><br>
+      <input type="submit" name="" value="Register">
+    </form>
+    <h1>Login</h1>
+    <form class="" action="/login" method="post">
+      {% csrf_token %}
+      Email: <input type="text" name="email" value="">
+      Password: <input type="password" name="password" value="">
+      <input type="submit" name="" value="Login">
+    </form>
+    {% if messages %}
+      {% for message in messages %}
+        <h2>{{ message }}</h2><br>
+      {% endfor %}
+    {% endif %}
+  </body>
+</html>
